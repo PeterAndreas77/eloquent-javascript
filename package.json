@@ -1,0 +1,23 @@
+{
+  "name": "eloquent-javascript",
+  "version": "1.0.0",
+  "description": "This is a git repo project to help myself learn JavaScript fundamentals using the book Eloquent Javascript.\r Every chapter content in this book is replicated and typed by hand to make it \"stick\" using repetition and help my typing speed.\r I also did the exercises and projects from scratch.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PeterAndreas77/eloquent-javascript.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PeterAndreas77/eloquent-javascript/issues"
+  },
+  "homepage": "https://github.com/PeterAndreas77/eloquent-javascript#readme",
+  "devDependencies": {
+    "jest": "^23.6.0"
+  }
+}
