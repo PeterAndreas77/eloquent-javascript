@@ -6,6 +6,11 @@
 //divisible by both 3 and 5 (and still print "Fizz" or "Buzz" for numbers divisible by only
 //one of those).
 function fizzBuzz(int) {
+  //Input sanitization
+  if (!int) return "Please provide a number";
+  if (isNaN(int)) return "Must be a number";
+  if (int <= 0) return "Number must be bigger than 0 and positive";
+
   for (let i = 1; i <= int; i++) {
     if (i % 5 === 0 && i % 3 === 0) console.log("Fizz Buzz");
     else if (i % 3 === 0) console.log("Fizz");
@@ -14,10 +19,15 @@ function fizzBuzz(int) {
   }
   return int;
 }
-// console.log("\nFIZZBUZZ:");
-// fizzBuzz(15);
+// console.log(fizzBuzz(15));
+// console.log(fizzBuzz());
+// console.log(fizzBuzz(-12));
+// console.log(fizzBuzz("asdasd"));
 
-test("It prints out fizzbuzz", () => {
+test("It prints out fizzbuzz properly", () => {
   const int = 100;
   expect(fizzBuzz(int)).toBe(int);
+  expect(fizzBuzz()).toEqual("Please provide a number");
+  expect(fizzBuzz(-12)).toEqual("Number must be bigger than 0 and positive");
+  expect(fizzBuzz("asdasd")).toEqual("Must be a number");
 });

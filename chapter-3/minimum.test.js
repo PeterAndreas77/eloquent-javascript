@@ -15,9 +15,9 @@ function minimum(a, b) {
 // console.log("Minimum between 0 and -10:", minimum(0.1, -10.11));
 // console.log("Minimum between A and B:", minimum("A", "B"));
 
-// test("Return a minimum between two values", () => {
-//   expect(minimum(1, 2)).toBe(1);
-//   expect(minimum(-1, 1)).toBe(-1);
-//   expect(minimum(1)).toEqual("Please input both numbers");
-//   expect(minimum("A", "B")).toEqual("Both a and b must be numbers");
-// });
+test("Return a minimum between two values", () => {
+  expect(minimum(1, 2)).toBe(1);
+  expect(minimum(-1, 1)).toBe(-1);
+  expect(minimum(1)).toEqual("Please input both numbers");
+  expect(minimum("A", "B")).toEqual("Both a and b must be numbers");
+});

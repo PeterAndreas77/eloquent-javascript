@@ -28,10 +28,10 @@ function isEven(num) {
 // console.log("Is -10 even?", isEven(-10.1));
 // console.log("Is 'hello' even?", isEven("hello"));
 
-// test("Tell if a number is even or not", () => {
-//   expect(isEven(3)).toBe(false);
-//   expect(isEven(-2)).toBe(true);
-//   expect(isEven(1.1)).toBe(false);
-//   expect(isEven(-4.5)).toBe(true);
-//   expect(isEven("world")).toEqual("Not a number");
-// });
+test("Tell if a number is even or not", () => {
+  expect(isEven(3)).toBe(false);
+  expect(isEven(-2)).toBe(true);
+  expect(isEven(1.1)).toBe(false);
+  expect(isEven(-4.5)).toBe(true);
+  expect(isEven("world")).toEqual("Not a number");
+});

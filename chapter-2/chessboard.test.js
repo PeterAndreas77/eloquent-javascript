@@ -15,8 +15,11 @@
 //change the program so that it works for any size, outputting a grid of the given width
 //and height.
 function chessboard(width, height) {
-  if (width < 0 && height < 0) {
-    console.log("Width and height must be positives!");
+  //Input sanitization
+  if (!width || !height) {
+    return "Please provide both width and height";
+  } else if (width < 0 && height < 0) {
+    return "Width and height must be positives!";
   } else {
     for (let i = 1; i <= height; i++) {
       if (i % 2 === 0) {
@@ -38,9 +41,12 @@ function chessboard(width, height) {
   }
   return `${width} by ${height} grid`;
 }
-// console.log("\nCHESSBOARD:");
-// chessboard(8, 8);
+// console.log(chessboard(8, 8));
+// console.log(chessboard(1));
+// console.log(chessboard());
 
 test("Console log N by N grid", () => {
   expect(chessboard(8, 8)).toMatch("8 by 8 grid");
+  expect(chessboard(1)).toEqual("Please provide both width and height");
+  expect(chessboard(-12, -2)).toEqual("Width and height must be positives!");
 });

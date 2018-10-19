@@ -22,12 +22,12 @@ function countBs(str) {
 // console.log(countBs());
 // console.log(countBs(2));
 
-// test("Count B to count properly", () => {
-//   expect(countBs("AAAA")).toBe(0);
-//   expect(countBs("BBBB")).toBe(4);
-//   expect(countBs()).toEqual("Please provide a string");
-//   expect(countBs(2)).toEqual("Please provide a string");
-// });
+test("Count B to count properly", () => {
+  expect(countBs("AAAA")).toBe(0);
+  expect(countBs("BBBB")).toBe(4);
+  expect(countBs()).toEqual("Please provide a string");
+  expect(countBs(2)).toEqual("Please provide a string");
+});
 
 // Next, write a function called countChar that behaves like countBs, except it takes a
 //second argument that indicates the character that is to be counted (rather than counting
@@ -49,9 +49,9 @@ function countChar(str, char) {
 // console.log(countChar(1, "a"));
 // console.log(countChar(sentence));
 
-// test("Count characters in a string properly", () => {
-//   expect(countChar(sentence, "a")).toBe(3);
-//   expect(countChar(sentence, "z")).toBe(0);
-//   expect(countChar(sentence)).toEqual("Please provide a char to match");
-//   expect(countChar(1, "a")).toEqual("Please provide a string");
-// });
+test("Count characters in a string properly", () => {
+  expect(countChar(sentence, "a")).toBe(3);
+  expect(countChar(sentence, "z")).toBe(0);
+  expect(countChar(sentence)).toEqual("Please provide a char to match");
+  expect(countChar(1, "a")).toEqual("Please provide a string");
+});
