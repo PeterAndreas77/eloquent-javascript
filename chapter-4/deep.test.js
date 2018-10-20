@@ -46,7 +46,18 @@ function deepEqual(obj1, obj2) {
     else return false;
   } else return obj1 === obj2;
 }
-let obj = { here: { is: "an" }, object: 2 };
-console.log(deepEqual(obj, obj));
-console.log(deepEqual(obj, { here: 1, object: 2 }));
-console.log(deepEqual(obj, { here: { is: "an" }, object: 2 }));
+// let obj = { here: { is: "an" }, object: 2 };
+// console.log(deepEqual(obj, obj));
+// console.log(deepEqual(obj, { here: 1, object: 2 }));
+// console.log(deepEqual(obj, { here: { is: "an" }, object: 2 }));
+
+test("Deeply compare two objects", () => {
+  const obj1 = { cheeseburger: { cheese: true, bacon: false }, number: 1 };
+  const obj2 = { cheeseburger: { cheese: false, bacon: true }, number: 1 };
+  expect(deepEqual(obj1, obj1)).toBe(true);
+  expect(deepEqual(obj1, obj2)).toBe(false);
+  expect(deepEqual(1, 1)).toBe(true);
+  expect(deepEqual(1, -1)).toBe(false);
+  expect(deepEqual("abc", "abc")).toBe(true);
+  expect(deepEqual("abc", "xyz")).toBe(false);
+});
