@@ -32,17 +32,34 @@ function countBy(items, groupName) {
 }
 //This function is NOT copied from the book
 function dominantDirection(text) {
+  //Input sanitization
+  if (!text) return "Please input texts of any language";
+  if (typeof text != "string") return "Input must be strings";
+
   let scripts = countBy(text, char => {
     let script = characterScript(char.codePointAt(0));
     return script ? script.direction : "none";
   }).filter(({ direction }) => direction != "none");
+  //Input sanitization
+  if (scripts.length === 1) return "Need more characters";
+
   let dominant = scripts.reduce((a, b) => {
     return a.count > b.count ? a.name : b.name;
   });
   return dominant;
 }
 
-console.log(dominantDirection("ᠮᠣᠩᠭᠣᠯ ᠬᠡᠯᠡ")); //mongolian
-console.log(dominantDirection("俄罗斯的狗说 英国的狗说")); //chinese
-console.log(dominantDirection("مساء الخير")); //arabic
-console.log(dominantDirection("rose 🌹, dragon 🐉, horse 🐴, shoe 👟")); //emojis
+// console.log(dominantDirection("ᠮᠣᠩᠭᠣᠯ ᠬᠡᠯᠡ"));
+// console.log(dominantDirection("俄罗斯的狗说 英国的狗说"));
+// console.log(dominantDirection("مساء الخير"));
+// console.log(dominantDirection("rose 🌹, dragon 🐉, horse 🐴, shoe 👟"));
+
+test("Return the dominant direction properly", () => {
+  expect(dominantDirection("a")).toEqual("Need more characters");
+  expect(dominantDirection(1)).toEqual("Input must be strings");
+  expect(dominantDirection()).toEqual("Please input texts of any language");
+  expect(dominantDirection("ᠮᠣᠩᠭᠣᠯ ᠬᠡᠯᠡ")).toBe("ttb");
+  expect(dominantDirection("俄罗斯的狗说 英国的狗说")).toBe("ltr");
+  expect(dominantDirection("مساء الخير")).toBe("rtl");
+  expect(dominantDirection("rose🌹, dragon🐉, horse🐴, shoe👟")).toBe("ltr");
+});
