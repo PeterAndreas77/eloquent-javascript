@@ -19,8 +19,7 @@ class Group {
   add(value) {
     if (!this.has(value)) {
       this.values.push(value);
-    } else
-      console.log(`${value} is already added, choose another number to add.`);
+    } else return `${value} is already in the collection.`;
   }
 
   has(value) {
@@ -28,7 +27,7 @@ class Group {
   }
 
   delete(value) {
-    if (!this.has(value)) console.log(`${value} is not in the collection.`);
+    if (!this.has(value)) return `${value} is not in the collection.`;
     else {
       this.values = this.values.filter(n => n !== value);
     }
@@ -42,12 +41,48 @@ class Group {
     return group;
   }
 }
+// let groupX = Group.from([10, 20]);
+// console.log(groupX.values);
+// groupX.add(10);
+// groupX.delete(10);
+// groupX.delete(10);
+// console.log(groupX.has(10));
+// groupX.add(10);
+// console.log(groupX.has(10));
 
-let groupX = Group.from([10, 20]);
-console.log(groupX.values);
-groupX.add(10);
-groupX.delete(10);
-groupX.delete(10);
-console.log(groupX.has(10));
-groupX.add(10);
-console.log(groupX.has(10));
+describe("Class group", () => {
+  test("From method works", () => {
+    const groupA = Group.from([10, 20, 30]);
+    const groupB = Group.from(["a", "b", "c"]);
+    expect(groupA.values).toEqual([10, 20, 30]);
+    expect(groupB.values).toEqual(["a", "b", "c"]);
+  });
+
+  test("Add method works", () => {
+    const groupA = Group.from([1, 2, 3]);
+    const groupB = Group.from(["a", "b", "c"]);
+    const C = "c";
+    groupA.add(4);
+    groupB.add("d");
+    expect(groupA.values).toEqual([1, 2, 3, 4]);
+    expect(groupB.values).toEqual(["a", "b", "c", "d"]);
+    expect(groupB.add(C)).toEqual(`${C} is already in the collection.`);
+  });
+
+  test("Has method works", () => {
+    const group = Group.from(["a", "b", 1, 2]);
+    expect(group.has(1)).toBe(true);
+    expect(group.has("c")).toBe(false);
+  });
+
+  test("Delete method works", () => {
+    const groupA = Group.from([1, 2, 3]);
+    const groupB = Group.from(["a", "b", "c"]);
+    const C = "c";
+    groupA.delete(1);
+    groupB.delete("c");
+    expect(groupA.values).toEqual([2, 3]);
+    expect(groupB.values).toEqual(["a", "b"]);
+    expect(groupB.delete(C)).toEqual(`${C} is not in the collection.`);
+  });
+});

@@ -13,8 +13,7 @@ class Group {
   add(value) {
     if (!this.has(value)) {
       this.values.push(value);
-    } else
-      console.log(`${value} is already added, choose another number to add.`);
+    } else return `${value} is already in the collection.`;
   }
 
   has(value) {
@@ -22,7 +21,7 @@ class Group {
   }
 
   delete(value) {
-    if (!this.has(value)) console.log(`${value} is not in the collection.`);
+    if (!this.has(value)) return `${value} is not in the collection.`;
     else {
       this.values = this.values.filter(n => n !== value);
     }
@@ -58,12 +57,27 @@ Group.prototype[Symbol.iterator] = function() {
   return new GroupIterator(this);
 };
 
-let groupY = Group.from([1, 2, 3]);
-for (let value of groupY) {
-  console.log(value);
-}
+// let groupY = Group.from([1, 2, 3]);
+// for (let value of groupY) {
+//   console.log(value);
+// }
 
-let groupZ = Group.from(["a", "b", "c"]);
-for (let value of groupZ) {
-  console.log(value);
-}
+// let groupZ = Group.from(["a", "b", "c"]);
+// for (let value of groupZ) {
+//   console.log(value);
+// }
+
+test("Iteration works", () => {
+  const result1 = [];
+  const result2 = [];
+  let group1 = Group.from([1, 2, 3]);
+  for (let value of group1) {
+    result1.push(value);
+  }
+  let group2 = Group.from(["a", "b", "c"]);
+  for (let value of group2) {
+    result2.push(value);
+  }
+  expect(group1.values).toEqual(result1);
+  expect(group2.values).toEqual(result2);
+});

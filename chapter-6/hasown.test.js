@@ -8,3 +8,10 @@ let map = { one: true, two: true, hasOwnProperty: true };
 // Fix this call
 // console.log(map.hasOwnProperty("one"));
 console.log(Object.prototype.hasOwnProperty.call(map, "two"));
+
+test("hasOwnProperty is called", () => {
+  const obj = Object.prototype.hasOwnProperty;
+  expect(obj.call(map, "one")).toBe(true);
+  expect(obj.call(map, "hasOwnProperty")).toBe(true);
+  expect(obj.call(map, "three")).toBe(false);
+});
