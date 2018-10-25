@@ -14,12 +14,13 @@ function loopATriangle(int) {
   if (int % 1 != 0) return "Number cannot have decimal";
   if (int <= 0) return "Number cannot be zero and must be positive";
 
-  let tags = "";
+  let rows = "";
+  let triangle = "";
   for (let i = 1; i <= int; i++) {
-    tags += "#";
-    console.log(tags);
+    rows += "#";
+    triangle += rows + "\n";
   }
-  return tags.length;
+  return triangle;
 }
 // console.log(loopATriangle(7));
 // console.log(loopATriangle());
@@ -28,8 +29,8 @@ function loopATriangle(int) {
 // console.log(loopATriangle("asd"));
 
 test("It will print a triangle", () => {
-  const seven = 7;
-  expect(loopATriangle(seven)).toBe(seven);
+  const result = "#\n##\n###\n####\n";
+  expect(loopATriangle(4)).toBe(result);
   expect(loopATriangle(7.77)).toEqual("Number cannot have decimal");
   expect(loopATriangle(-1)).toEqual(
     "Number cannot be zero and must be positive"

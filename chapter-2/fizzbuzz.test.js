@@ -11,13 +11,14 @@ function fizzBuzz(int) {
   if (isNaN(int)) return "Must be a number";
   if (int <= 0) return "Number must be bigger than 0 and positive";
 
+  let fixbux = "";
   for (let i = 1; i <= int; i++) {
-    if (i % 5 === 0 && i % 3 === 0) console.log("Fizz Buzz");
-    else if (i % 3 === 0) console.log("Fizz");
-    else if (i % 5 === 0) console.log("Buzz");
-    else console.log(i);
+    if (i % 5 === 0 && i % 3 === 0) fixbux += "\nFizz Buzz";
+    else if (i % 3 === 0) fixbux += "\nFizz";
+    else if (i % 5 === 0) fixbux += "\nBuzz";
+    else fixbux += `\n${i}`;
   }
-  return int;
+  return fixbux;
 }
 // console.log(fizzBuzz(15));
 // console.log(fizzBuzz());
@@ -25,8 +26,10 @@ function fizzBuzz(int) {
 // console.log(fizzBuzz("asdasd"));
 
 test("It prints out fizzbuzz properly", () => {
-  const int = 100;
-  expect(fizzBuzz(int)).toBe(int);
+  const int = 15;
+  expect(fizzBuzz(int)).toBe(
+    "\n1\n2\nFizz\n4\nBuzz\nFizz\n7\n8\nFizz\nBuzz\n11\nFizz\n13\n14\nFizz Buzz"
+  );
   expect(fizzBuzz()).toEqual("Please provide a number");
   expect(fizzBuzz(-12)).toEqual("Number must be bigger than 0 and positive");
   expect(fizzBuzz("asdasd")).toEqual("Must be a number");
