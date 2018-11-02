@@ -77,7 +77,7 @@ function randomRobot(state) {
   return { direction: randomPick(roadGraph[state.place]) };
 }
 
-VillageState.random = function(parcelCount = 5) {
+VillageState.random = function(parcelCount = 100) {
   let parcels = [];
   for (let i = 0; i < parcelCount; i++) {
     let address = randomPick(Object.keys(roadGraph));
@@ -89,9 +89,6 @@ VillageState.random = function(parcelCount = 5) {
   }
   return new VillageState("Post Office", parcels);
 };
-
-console.log("\nRANDOM ROUTE");
-runRobot(VillageState.random(), randomRobot);
 
 //* MAIL ROUTES */
 const mailRoute = [
@@ -116,9 +113,6 @@ function routeRobot(state, memory) {
   }
   return { direction: memory[0], memory: memory.slice(1) };
 }
-
-console.log("\nMAIL TRUCK ROUTE");
-runRobot(VillageState.random(), routeRobot, []);
 
 //* PATHFINDING */
 function findRoute(graph, from, to) {
@@ -146,5 +140,16 @@ function goalOrientedRobot({ place, parcels }, route) {
   return { direction: route[0], memory: route.slice(1) };
 }
 
-console.log("\nPATHFINDER ROUTE");
-runRobot(VillageState.random(), goalOrientedRobot, []);
+function compareRobots(robot1, memory1, robot2, memory2) {}
+function runRobot(state, robot, memory) {
+  for (let turn = 0; ; turn++) {
+    if (state.parcels.length == 0) {
+      console.log(`Done in ${turn} turns`);
+      break;
+    }
+    let action = robot(state, memory);
+    state = state.move(action.direction);
+    memory = action.memory;
+    console.log(`Moved to ${action.direction}`);
+  }
+}
