@@ -74,11 +74,11 @@ updating the world.
 
 This is wrong.
 
-It usually is. The fact that something sounds like an object does not automatically mean
-that it should be an object in your program. Reflexively writing classes for every concept
-in your application tends to leave you with a collection of interconnected objects that each
-have their own internal, changing state. Such programs are often hard to understand and thus
-easy to break.
+At least, it usually is. The fact that something sounds like an object does not
+automatically mean that it should be an object in your program. Reflexively writing classes
+for every concept in your application tends to leave you with a collection of interconnected
+objects that each have their own internal, changing state. Such programs are often hard to
+understand and thus easy to break.
 
 Instead, let’s condense the village’s state down to the minimal set of values that define it.
 There’s the robot’s current location and the collection of undelivered parcels, each of
